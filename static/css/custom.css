@@ -1,0 +1,43 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+
+/*button*/
+
+.orange-btn{
+  background: #F77D24;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: Sans-serif;
+  font-size: 18px;
+  padding-left: 15px;
+  i{
+    display:inline-block;
+    border-left: 1px solid rgba(255,255,255,0.35);
+    padding: 15px;
+    margin-left: 15px;
+  }
+}
+
+/* NEWPAGE */
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}

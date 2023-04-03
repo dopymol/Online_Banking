@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<!-- Section: Design Block -->
+<head xmlns="http://www.w3.org/1999/html">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script language="javascript" type="text/javascript">
+            function dynamicdropdown(listindex)
+            {
+                document.getElementById("subcategory").length = 0;
+                switch (listindex)
+                {
+                    case "Ernakulam" :
+                        document.getElementById("subcategory").options[0]=new Option("Please select branch","");
+                        document.getElementById("subcategory").options[1]=new Option("Aluva","Aluva");
+                        document.getElementById("subcategory").options[2]=new Option("Edapally","Edapally");
+                        document.getElementById("subcategory").options[3]=new Option("Angamally","Angamally");
+                        document.getElementById("subcategory").options[4]=new Option("Manjapra","Manjapra");
+                       break;
+
+                    case "Trissur" :
+                        document.getElementById("subcategory").options[0]=new Option("Please select branch","");
+                        document.getElementById("subcategory").options[1]=new Option("Irinjalakkuda","Irinjalakkuda");
+                        document.getElementById("subcategory").options[2]=new Option("Vallachira","Vallachira");
+                        document.getElementById("subcategory").options[3]=new Option("Chalakkudy","Chalakkudy");
+                        document.getElementById("subcategory").options[4]=new Option("Avanoor","Avanoor");
+                        break;
+                    case "Trivandrum" :
+                        document.getElementById("subcategory").options[0]=new Option("Please select branch","");
+                        document.getElementById("subcategory").options[1]=new Option("Alamcode","Alamcode");
+                        document.getElementById("subcategory").options[2]=new Option("Attingal","Attingal");
+                        document.getElementById("subcategory").options[3]=new Option("Vazhichal","Vazhichal");
+                        document.getElementById("subcategory").options[4]=new Option("Vellanad","Vellanad");
+                        break;
+                    case "Idukky" :
+                        document.getElementById("subcategory").options[0]=new Option("Please select branch","");
+                        document.getElementById("subcategory").options[1]=new Option("Kattapana","Kattapana");
+                        document.getElementById("subcategory").options[2]=new Option("Thodupuzha","Thodupuzha");
+                        break;
+                    case "Kottayam" :
+                        document.getElementById("subcategory").options[0]=new Option("Please select branch","");
+                        document.getElementById("subcategory").options[1]=new Option("Changanassery","Changanassery");
+                        document.getElementById("subcategory").options[2]=new Option("Pala","Pala");
+                        document.getElementById("subcategory").options[2]=new Option("Erattupetta","Erattupetta");
+                        document.getElementById("subcategory").options[2]=new Option("Ettumanoor","Ettumanoor");
+                        break;
+                }
+                return true;
+            }
+       </script>
+    </head>
+<section class="">
+  <!-- Jumbotron -->
+  <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h1 class="my-5 display-3 fw-bold ls-tight">
+            The best offer <br />
+            <span class="text-primary">for your business</span>
+          </h1>
+          <p style="color: hsl(217, 10%, 50.8%)">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Eveniet, itaque accusantium odio, soluta, corrupti aliquam
+            quibusdam tempora at cupiditate quis eum maiores libero
+            veritatis? Dicta facilis sint aliquid ipsum atque?
+          </p>
+        </div>
+
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card">
+            <div class="card-body py-5 px-md-5">
+              <form action="{% url 'e_bank:thank' %}" method="POST">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                  {% csrf_token %}
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" name="firstname" id="form3Example1" class="form-control" required>
+                      <label class="form-label" for="form3Example1">First name</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" name="lastname" id="form3Example2" class="form-control" required>
+                      <label class="form-label" for="form3Example2">Last name</label>
+                    </div>
+                  </div>
+                </div>
+
+                   <div>
+                     <label class="input-label">DOB</label>
+                     <input type="date" name="dob" required>
+                 </div><br>
+
+                    <div class="input">
+				<label class="input-label">Age</label>
+				<input type="number" class="input-field" required>
+                  </div><br>
+
+                  	<div class="input">
+                        <label class="input-label">Gender:</label>
+				<input type="radio" name="gender" value="male"> Male
+				<input type="radio" name="gender" value="female"> Female
+			</div><br>
+	<div class="input">
+                  	<label class="input-label">Phone.no</label><br>
+			<input type="tel" name="telphone" class="form-control" pattern="[0-9]{10}"  title="Ten digits code" required>
+	</div><br>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3">Email address</label>
+                  <input type="email" id="form3Example3" class="form-control" required>
+                </div>
+
+                  <div class="input">
+				<label class="input-label">Address</label>
+				<input type="text" class="form-control" required>
+			</div><br>
+
+             <div class="category_div" id="category_div">Please specify District:
+            <select name="category" class="required-entry" id="category" onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);">
+                <option value="">Select District</option>
+                <option value="Ernakulam">Ernakulam</option>
+                <option value="Trissur">Trissur</option>
+                <option value="Trivandrum">Trivandrum</option>
+                <option value="Idukky">Idukky</option>
+                <option value="Kottayam">Kottayam</option>
+            </select>
+        </div>
+        <div class="sub_category_div" id="sub_category_div">Please select Branch:
+            <script type="text/javascript" language="JavaScript">
+                document.write('<select name="subcategory" id="subcategory"><option value="">Please select framework</option></select>')
+            </script>
+            <noscript>
+                <select name="subcategory" id="subcategory" >
+                    <option value="">Please select framework</option>
+                </select>
+            </noscript>
+        </div>
+
+
+
+  <label for="language">Account type:</label>
+<select name="language" id="language">
+  <option value="javascript">Savings account</option>
+  <option value="python">Current account</option>
+  <option value="c++">NRI account</option>
+  <option value="java" selected>Salary account</option>
+</select><br>
+
+
+	<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1">Debit Card</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2">Credit Card</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat1">
+  <label for="vehicle3">Cheque Book </label><br>
+	<input type="checkbox" id="vehicle4" name="vehicle4" value="Boat2">
+  <label for="vehicle3">Prepaid cards </label><br>
+	<input type="checkbox" id="vehicle5" name="vehicle5" value="Boat3">
+  <label for="vehicle3">Forex card </label><br>
+
+		<br><br>
+		<div class="card-info">
+			<p>By signing up you are agreeing to our <a href="#">Terms and Conditions</a></p>
+			<small><a href="{% url 'e_bank:home' %}">back to home page</a></small>
+		</div>
+
+
+	</div>
+
+</div>
+
+            <!-- Submit button -->
+
+                <button type="submit" class="btn btn-primary btn-block mb-4">
+                  Submit
+                </button>
+                 </form>
+
+             <a href="{% url 'Credentials:logout' %}"><button type="submit" class="btn btn-primary btn-block mb-4">
+                  Logout
+             </button></a>
+
+
+                <div class="text-center">
+                  <p>or sign up with:</p>
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                  </button>
+
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                  </button>
+
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                  </button>
+
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                  </button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>
+<!-- Section: Design Block -->
+
+  <div>
+        <div class="alert alert-warning" role="alert">
+        <b style="text-align:center;">This is a demonstration of Online banking website.Not a real banking website!</b>
+    </div>
+    </div>
+{% endblock %}
+
